@@ -45,10 +45,13 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        for (int i = 0; i < dataset.size(); i++) {
+            dataset.get(i).setPosition(i);
+        }
         Pokemon p = dataset.get(position);
         p.setPosition(position);
         setPokemon(p);
-        MyThread myThread = new MyThread(holder,dataset,p);
+        MyThread myThread = new MyThread(holder,dataset,position);
         Thread thread = new Thread(myThread);
         thread.start();
         try {
@@ -94,18 +97,18 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
     public class MyThread implements Runnable, View.OnClickListener{
         private ViewHolder holder;
         private ArrayList<Pokemon> dataset;
-        private final Pokemon pokemon;
+        private int position;
 
-        public MyThread(ViewHolder holder,ArrayList<Pokemon> dataset, Pokemon pokemon) {
+        public MyThread(ViewHolder holder,ArrayList<Pokemon> dataset, int position) {
             this.holder = holder;
             this.dataset = dataset;
-            this.pokemon = pokemon;
+            this.position = position;
         }
 
         @Override
         public void run() {
 
-            holder.textView.setText(dataset.get(pokemon.getPosition()).getName());
+            holder.textView.setText(dataset.get(position).getName());
             holder.imageView.setOnClickListener(this);
 
         }
@@ -115,7 +118,7 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
 
             PokeDetailsFragment fragment = new PokeDetailsFragment();
             View fragmentView = fragment.getView();
-            fragment.setPokemon(getPokemon());
+            fragment.setPokemon(dataset.get(position));
             FragmentTransaction fragmentTransaction = manager.beginTransaction();
             fragmentTransaction.replace(R.id.relativeLayout, fragment);
             fragmentTransaction.addToBackStack(null);
