@@ -9,6 +9,15 @@ public class Pokemon {
     private int id;
     private String name;
     private String url;
+    private int position;
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
     public String getName() {
         return name;
