@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.nyc.homework11.model.Pokemon;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -35,7 +34,7 @@ public class PokeDetailsFragment extends Fragment {
         View view = (RelativeLayout) inflater.inflate(R.layout.fragment_poke_details, container, false);
         setViews(view);
         this.view = view;
-        move1.setText(pokemon.getName());
+        move1.setText(pokemon.getStats()[0].getStat().getName());
         return view;
     }
 

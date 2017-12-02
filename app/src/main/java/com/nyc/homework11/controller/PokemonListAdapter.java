@@ -1,6 +1,5 @@
 package com.nyc.homework11.controller;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -59,8 +58,9 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        int id = (p.getPosition() + 1);
         Picasso.with(context)
-                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + p.getId() + ".png")     // optional
+                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + id + ".png")     // optional
                 // optional
                 .resize(350, 300)
                 .into(holder.imageView);
@@ -99,7 +99,7 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
         private ArrayList<Pokemon> dataset;
         private int position;
 
-        public MyThread(ViewHolder holder,ArrayList<Pokemon> dataset, int position) {
+        public MyThread(ViewHolder holder, ArrayList<Pokemon> dataset, int position) {
             this.holder = holder;
             this.dataset = dataset;
             this.position = position;
@@ -108,7 +108,7 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
         @Override
         public void run() {
 
-            holder.textView.setText(dataset.get(position).getName());
+            holder.textView.setText(dataset.get(position).getStats()[0].getStat().getName());
             holder.imageView.setOnClickListener(this);
 
         }

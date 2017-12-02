@@ -7,8 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.nyc.homework11.controller.PokemonListAdapter;
-import com.nyc.homework11.model.Pokemon;
 import com.nyc.homework11.model.PokemonRequest;
+import com.nyc.homework11.model.Pokemon;
 import com.nyc.homework11.pokeapi.PokeapiService;
 
 import java.util.ArrayList;

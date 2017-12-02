@@ -1,46 +1,38 @@
 package com.nyc.homework11.model;
 
+import com.nyc.homework11.model.objects.Sprites;
+import com.nyc.homework11.model.objects.Stats;
+import com.nyc.homework11.model.objects.Types;
+
 /**
- * Created by c4q on 11/29/17.
+ * Created by c4q on 12/1/17.
  */
 
 public class Pokemon {
-
-    private int id;
-    private String name;
-    private String url;
+    private Stats[] stats;
+    private Sprites sprites;
+    private Types[] types;
     private int position;
 
-    public int getPosition() {
-        return position;
+    //TODO: Create getters
+
+    public Stats[] getStats() {
+        return stats;
+    }
+
+    public Sprites getSprites() {
+        return sprites;
+    }
+
+    public Types[] getTypes() {
+        return types;
     }
 
     public void setPosition(int position) {
         this.position = position;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public int getId() {
-        String[] urlPartes = url.split("/");
-        return Integer.valueOf(urlPartes[urlPartes.length - 1]);
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public int getPosition() {
+        return position;
     }
 }
